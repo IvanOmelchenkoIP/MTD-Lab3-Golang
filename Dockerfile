@@ -12,7 +12,7 @@ RUN CGO_ENABLED=0 go build -o ./build/fizzbuzz
 
 COPY . /app
 
-FROM gcr.io/distroless/static-debian11
+FROM gcr.io/distroless/static-debian11:debug
 
 COPY --from=builder /app /
 
