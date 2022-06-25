@@ -1,4 +1,4 @@
-FROM golang:1.17
+FROM golang:1.17 AS builder
 
 WORKDIR /app
 
@@ -8,8 +8,12 @@ RUN go mod download
 
 COPY . /app
 
-RUN go build -o build/fizzbuzz
+RUN CGO_ENABLED=0 go build -o ./build/fizzbuzz 
 
-EXPOSE 8080
+COPY . /app
+
+FROM scratch
+
+COPY --from=builder /app /
 
 CMD ["./build/fizzbuzz", "serve"]
