@@ -11,3 +11,11 @@ This is the second (Golang) part of the Methodologies and Technologies of Progra
 ## App Description
 
 You can find description of an app in README.rst file or by original link.
+
+## Dockerfile
+
+To build and run dockerfile image use commands:
+
+    docker build -f Dockerfile -t lab03:g1 .
+
+    docker run --rm -it lab03:g1
